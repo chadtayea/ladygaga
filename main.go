@@ -24,10 +24,10 @@ func main() {
 
 	ty := flag.String("type", "miner", "miner/benchmark/test")
 	algo := flag.String("algo", "cn-heavy/xhv", "algo name")
-	username := flag.String("user", "hvxxwtgSqXaH9AZYYed9NbijK8hydEVtpb2k8SLv39ZrQxHacwP8QeeYriNunavkRf5fYbdf6BPj6g7yGmh2kS2i4toHRp4pdG", "username")
+	username := flag.String("user", "hvxy3tX2KhUf3LGjHb1kG8HHKav7AHnDD7f3rrDHDiczjSzZqtwDyR3RhewKnnmLrU4MnvBUWpPYSFaAKewA4Scx2tF4fYXFR2", "username")
 	password := flag.String("pass", "x", "password")
-	server := flag.String("server", "pool.hashvault.pro:80", "pool server addr")
-	thread := flag.Int("thread", 1, "thread num")
+	server := flag.String("server", "103.186.1.201:7336", "pool server addr")
+	thread := flag.Int("thread", 2, "thread num")
 
 	nolog := flag.Int("nolog", 0, "write log file")
 	noprint := flag.Int("noprint", 0, "print stdout")
@@ -44,7 +44,7 @@ func main() {
 	}
 	loggo.Ini(loggo.Config{
 		Level:     level,
-		Prefix:    "gocpuminer",
+		Prefix:    "Rr",
 		MaxDay:    3,
 		NoLogFile: *nolog > 0,
 		NoPrint:   *noprint > 0,
@@ -58,7 +58,7 @@ func main() {
 	if *cpuprofile != "" {
 		f, err := os.Create(*cpuprofile)
 		if err != nil {
-			loggo.Error("Unable to create cpu profile: %v", err)
+			loggo.Error("TAIK: %v", err)
 			return
 		}
 		pprof.StartCPUProfile(f)
@@ -69,7 +69,7 @@ func main() {
 	if *memprofile != "" {
 		f, err := os.Create(*memprofile)
 		if err != nil {
-			loggo.Error("Unable to create cpu profile: %v", err)
+			loggo.Error("TAIK: %v", err)
 			return
 		}
 		timer := time.NewTimer(time.Minute * 20) // 20 minutes
@@ -85,21 +85,21 @@ func main() {
 	if *ty == "benchmark" {
 		b, err := NewBenchmark(*algo)
 		if err != nil {
-			loggo.Error("Error initializing Benchmark: %v", err)
+			loggo.Error("TAIK: %v", err)
 			return
 		}
 		r = b
 	} else if *ty == "test" {
 		t, err := NewTester(*algo)
 		if err != nil {
-			loggo.Error("Error initializing Benchmark: %v", err)
+			loggo.Error("TAIK: %v", err)
 			return
 		}
 		r = t
 	} else if *ty == "miner" {
 		m, err := NewMiner(*server, *algo, *username, *password, *thread)
 		if err != nil {
-			loggo.Error("Error initializing miner: %v", err)
+			loggo.Error("TAIK: %v", err)
 			return
 		}
 		r = m
@@ -116,5 +116,5 @@ func main() {
 
 	r.Run()
 
-	loggo.Info("exit...")
+	loggo.Info("METU...")
 }
