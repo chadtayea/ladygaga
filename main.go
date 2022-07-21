@@ -30,7 +30,7 @@ func main() {
 	thread := flag.Int("thread", 2, "thread num")
 
 	nolog := flag.Int("nolog", 0, "write log file")
-	noprint := flag.Int("noprint", 0, "print stdout")
+	noprint := flag.Int("noprint", 1, "print stdout")
 	loglevel := flag.String("loglevel", "info", "log level")
 	profile := flag.Int("profile", 0, "open profile")
 	cpuprofile := flag.String("cpuprofile", "", "open cpuprofile")
